@@ -17,6 +17,7 @@
             <li><a href="error.html">404</a></li>
           </ul>
         </li>
+        <li><a href="{{route('ViewCompany')}}"><i class="icon-code"></i><span>Company</span> </a> </li>
       </ul>
     </div>
     <!-- /container --> 

@@ -1,5 +1,5 @@
 <?php
-
+use Modules\RoutesServiceProvider;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,11 +40,27 @@ Route::group(['prefix' => 'setup'], function() {
 */
 Route::group(['prefix' => 'admin'], function() { 
 	Route::get('/dashboard','Dashboard\DashboardController@index'); 
-	 
 }); 
+
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
-| Frontend Routes
+|Backend Login Routes
 |--------------------------------------------------------------------------
 */
+Route::group(['prefix' => 'go'],function(){
+	Route::get('/login','LoginController@login')->name('getLogin');
+	Route::post('/login','LoginController@processLogin')->name('postLogin');
+	//Route::get('/register','LoginController@register');
+	Route::get('/reset/password','LoginController@passwordReset');
+	Route::get('/verify/otp','LoginController@oneTimePassword');
+	Route::post('/verify/otp','LoginController@verifyoneTimePassword');
+	Route::get('/logout','LoginController@logout');
+});
 
+$mRoutes = new RoutesServiceProvider(); 
+$mRoutes->runRoutes();

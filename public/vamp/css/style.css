@@ -251,9 +251,9 @@ textarea {
 */
 
 .main {
-	padding-bottom: 2em;
+	/* padding-bottom: 2em;
 	
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #000; */
 }
 
 
@@ -1284,3 +1284,21 @@ color: #333;
 	
 }
 
+
+/*************Additional CSS *********************/
+.errorClass{
+	border-color: rgba(204, 0, 0, 0.8);
+    box-shadow: 0 1px 1px rgba(204, 0, 0, 0.075) inset, 0 0 8px rgba(204, 0, 0, 0.6);
+	outline: 0 none;
+	
+}
+.errorText{
+	color: #cc0000;
+}
+.thumnailholder{
+	max-height: 200px;
+	max-width: 200px;
+}
+textarea{
+	width:auto !important;
+}

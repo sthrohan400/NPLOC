@@ -4,10 +4,20 @@
 @include('master.meta')
 @include('master.css')
 </head>
-@include('master.message')
+
 @include('master.navbar')
 @include('master.headermenu')
-@yield('content');
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+      <div class="row"> 
+        @include('master.message')    
+        @yield('content');
+      </div>
+</div>
+</div>
+</div>  
+    
 <body>
 @include('master.footer')	
 @include('master.js')	
