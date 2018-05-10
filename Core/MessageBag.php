@@ -1,6 +1,6 @@
 <?php
 namespace Core;
 
-class Email{
+class MessageBag{
 	
 }

@@ -11,3 +11,14 @@
 .theadbg{
     background: #32323d !important;
 }
+
+#overlay{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%,-50%,0);
+}
+#overlay img{
+	height: 70px;
+	width: 70px;
+}

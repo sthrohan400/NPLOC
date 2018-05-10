@@ -11,8 +11,8 @@ class UsersRequest extends FormRequest{
             //'company_id' => 'required',
             'username' => 'required|unique:users',
             'email' => 'required|unique:users',
-            'password' => 'required|min:6|alpha_num',
-            'password_confirmation' => 'required|confirmed'
+            'password' => 'required|min:6|alpha_num|confirmed',
+            'password_confirmation' => 'required'
         ];
         return $rules;
     }

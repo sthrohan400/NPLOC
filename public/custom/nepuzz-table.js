@@ -5,6 +5,7 @@
     var datadelete;
     var url = "";
     var getBaseUrl;
+    var dids = []; //multiple ids to delete
     $('#overlay').hide();
     $.getBaseUrl = function(){
         return url;
@@ -32,31 +33,72 @@
             },1000);
         }
         datadelete = function(id){
-            var dURL = $.getBaseUrl()+"/"+id;
-            var formdata= new FormData;
-            formdata.append('_method','DELETE');
-            formdata.append('_token',$('meta[name=csrf-token]').attr('content'));
-            $('#overlay').show().css('display', 'flex');
-            $.ajax({
-                url: dURL,
-                type: 'post',
-                data: {
-                        '_method':'DELETE',
-                        '_token': $('meta[name=csrf-token]').attr('content')
-                      },
-                success: function (data) {
-                    $('#overlay').hide();
-                    $.getData();
-                },
-                error: function(e){
-                    $('#overlay').hide();
-                    alert("Failed.");
-                } 
-            });
+            var checkUserDelete = confirm("Are you sure to delete the item. ?");
+            if(checkUserDelete){
+                    var dURL = $.getBaseUrl()+"/"+id+'/delete';
+                    var formdata= new FormData;
+                    formdata.append('_method','POST');
+                    formdata.append('_token',$('meta[name=csrf-token]').attr('content'));
+                    $('#overlay').show().css('display', 'flex');
+                    $.ajax({
+                        url: dURL,
+                        type: 'post',
+                        data: {
+                                '_token': $('meta[name=csrf-token]').attr('content')
+                              },
+                        success: function (data) {
+                            $('#overlay').hide();
+                            $.getData();
+                        },
+                        error: function(e){
+                            $('#overlay').hide();
+                            alert("Sorry. Network Error.Failed.");
+                        } 
+                    });
+            }
+        }
+
+        assignDeleteIds =  function(id){
+            if(!!id){
+                var tempindex = dids.indexOf(id);
+                if(tempindex == -1){
+                    dids.push(id);
+                }
+                else{
+                    dids.splice(tempindex,1);
+                }
+                console.log(dids);
+                $('input[name="delete_ids"]').val(JSON.stringify(dids));
+            }
+
+        }
+        multipleDatadelete = function(ids){
+            var checkUserDelete = confirm("Are you sure to delete the item. ?");
+            if(checkUserDelete){
+                    var dURL = $.getBaseUrl()+"/delete/multiple";
+                    var formdata= new FormData;
+                    $('#overlay').show().css('display', 'flex');
+                    $.ajax({
+                        url: dURL,
+                        type: 'post',
+                        data: {
+                                'ids':$('input[name="delete_ids"]').val(),
+                                '_token': $('meta[name=csrf-token]').attr('content')
+                              },
+                        success: function (data) {
+                            $('#overlay').hide();
+                            $.getData();
+                        },
+                        error: function(e){
+                            $('#overlay').hide();
+                            alert("Sorry. Network Error.Failed.");
+                        } 
+                    });
+            }
+
         }
         paginate = function(inp){
             page = !!inp ? inp : 1;
-           
             $.getData();
         }
         $.getData = function(){
@@ -92,17 +134,20 @@
         $.getHeader = function(val){
             console.log(orderby);
             var head_template = "";
+             head_template+= '<th><a href="javascript:void(0)" onclick="multipleDatadelete()"><i class="fa fa-trash"><input type="hidden" name="delete_ids"></i></a></th>';
             $.each(val,function(key,value){
+
                 head_template += '<th>'+value.display;
-                if(orderby == (value.key+" ASC")){
-                     head_template += '<a href="#"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-sort-amount-desc" ></i></a></th>';
-                }
-                else if(orderby == ""){
-                    head_template += '<a href="#"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-long-arrow-down" ></i><i class="fa fa fa-long-arrow-up" ></i></a></th>';
-                }
-                else
-                    head_template += '<a href="#" onclick="sortColumn(\''+value.key+'\',\'ASC\',this)" data-key="'+value.key+'"> <i class="fa fa fa-sort-amount-asc "></i></a>';
-                   
+                if(!!value.sort){
+                    if(orderby == (value.key+" ASC")){
+                         head_template += '<a href="#"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-sort-amount-desc" ></i></a></th>';
+                    }
+                    else if(orderby == ""){
+                        head_template += '<a href="#"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-long-arrow-down" ></i><i class="fa fa fa-long-arrow-up" ></i></a></th>';
+                    }
+                    else
+                        head_template += '<a href="#" onclick="sortColumn(\''+value.key+'\',\'ASC\',this)" data-key="'+value.key+'"> <i class="fa fa fa-sort-amount-asc "></i></a>';
+                }  
             })
             head_template += "<th> Option </th>";
             return head_template;
@@ -111,9 +156,10 @@
             var body_template ="";
             $.each(results,function(key,value){
                 body_template +='<tr>';
+                 body_template += '<td> <input type="checkbox" class="form-check-input" onclick="assignDeleteIds('+value.id+')"></td>'
                // body_template +='<td>'+key+'</td>'
                 $.each(fields,function(fKey,fValue){
-                    console.log(fValue);
+
                     if(!!fValue.option){
                         if(fValue.option == 'status'){
                             if(value[fValue.key]){

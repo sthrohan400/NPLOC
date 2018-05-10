@@ -12,7 +12,6 @@ class MUsersController extends Controller{
 
     }   
     public function index(Request $request){
-       //return $request->session()->all();
         return view('users.index');
     }
     public function create(Request $request){
@@ -20,6 +19,7 @@ class MUsersController extends Controller{
     }
     public function store(UsersRequest $request){
             $input = $request->except(['password_confirmation']);
+            $input['password'] = bcrypt($input['password']);
             return $this->usersRepo->store($input);
     }
     public function search(Request $request){
@@ -28,5 +28,14 @@ class MUsersController extends Controller{
         $keywords = $request->get('keywords',null);
         $orderby = $request->get('orderby',null);
         return $this->usersRepo->partial($page,$pagesize,$keywords,$orderby);
+    }
+    public function delete($id){
+        $response =  $this->usersRepo->destroy($id);
+        return json_encode($response);
+    }
+    public function multipleDelete(Request $request){
+            $ids =  $request->input('ids');
+            $response = $this->usersRepo->multipleDestroy($ids);
+            return var_dump($response);
     }
 }

@@ -32,6 +32,28 @@ class CoreRepository implements CoreInterface
 	public function destroy($id){
 		return  $this->entityModel->find($id)->delete();
 	}
+	public function multipleDestroy($ids){
+		$ids = json_decode($ids,true);
+		if(empty($ids)){
+			return 0;
+		}
+		$deleted_ids = [];
+		$total_data =  count($ids);
+		$i = 0;
+		foreach($ids as $id){
+			$is_deleted = false;
+			$is_deleted = $this->entityModel->find($id)->delete();
+			if($is_deleted){
+				$deleted_ids[]=$id;
+				$i++;
+			}
+			if($i == $total_data){
+			return 1;
+			}
+		}
+		return $deleted_ids;
+		
+	}
 	public function partial($page=1,$pagesize=1000,$keywords=null,$orderBy=""){
 		if(empty($orderBy))
 			$orderBy = 'created_at ASC';

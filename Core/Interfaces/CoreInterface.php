@@ -10,6 +10,7 @@ interface CoreInterface
 	 function store($inputData);
 	 function update($inputData,$id);
 	 function destroy($id);
+	 function multipleDestroy($ids);
 	//  function processFiles($files);
 	//  function getThumbnailPath();
 	//  function uploadThumbnail($file);

@@ -15,28 +15,28 @@ class UsersTableSeeder extends Seeder
     {
         //
         $faker = Faker::create();
-    	foreach (range(1,10) as $index) {
+    	foreach (range(1,50) as $index) {
 	        DB::table('users')->insert([
                 'company_id' => 1,
                 'name' => $faker->name,
 	            'username' => $faker->username,
                 'email' => $faker->email,
-                'profile_image' => $faker->image('public/uploads/profile',400,300, null, false),
+                // 'profile_image' => $faker->image('public/uploads/profile',400,300, null, false),
                 'password' => bcrypt('secret'),
                 'status' => 1,
                 'verified' => 1
              ]);
         }
-        DB::table('users')->insert([
-            'company_id' => 1,
-            'username' => 'nepuzz',
-            'name' => 'Nepuzz Solutions',
-            'email' => 'info@nepuzz.com',
-            'profile_image' => '',
-            'password' => bcrypt('121212'),
-            'status' => 1,
-            'verified' => 1
-         ]);
+        // DB::table('users')->insert([
+        //     'company_id' => 1,
+        //     'username' => 'nepuzz',
+        //     'name' => 'Nepuzz Solutions',
+        //     'email' => 'info@nepuzz.com',
+        //     'profile_image' => '',
+        //     'password' => bcrypt('121212'),
+        //     'status' => 1,
+        //     'verified' => 1
+        //  ]);
     }
 
 }
