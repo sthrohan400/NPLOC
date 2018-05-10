@@ -63,8 +63,9 @@ class CoreRepository implements CoreInterface
 		$sql .= " OFFSET ".$offset;
 		$response = [];
 		$result =  DB::select(DB::raw($sql));
-		$countsql = "SELECT COUNT(*) FROM ".$this->entityModel->table." WHERE deleted_at IS NULL";
+		$countsql = "SELECT COUNT(*) as count FROM ".$this->entityModel->table." WHERE deleted_at IS NULL";
 		$total = DB::select(DB::raw($countsql));
+		//return ($total);
 		$response['total'] = $total[0]->count;
 		$response['rows'] = $result;
 		$response['page'] = $page;

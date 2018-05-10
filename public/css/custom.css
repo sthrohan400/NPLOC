@@ -1,0 +1,10 @@
+.errorInput{
+    box-shadow: 0 0 4px #cc0000;
+}
+.errorText{
+    color:#cc0000;
+    text-indent: 0px;
+    padding: 10px;
+}
+/* #datepicker{width:180px; margin: 0 20px 20px 20px;}
+#datepicker > span:hover{cursor: pointer;} */

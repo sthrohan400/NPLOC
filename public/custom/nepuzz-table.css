@@ -1,0 +1,13 @@
+.margin-10
+{
+    margin:10px;
+}
+.dataTables_filter{
+    float:right;
+}
+.dataTables_length{
+    float:left;
+}
+.theadbg{
+    background: #32323d !important;
+}

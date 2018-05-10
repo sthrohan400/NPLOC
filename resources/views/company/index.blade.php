@@ -9,14 +9,13 @@
               <h3 ><button class="btn ">Add Company</button></h3>
             </div>
             <!-- /widget-header -->
-            <div class="widget-content col-md-6">
+            <div class="widget-content ">
               <div class="widget big-stats-container">
                 <div class="widget-content">
                     <br/>
                     <form id="edit-profile" class="form-horizontal" method="POST" action="{{url('/admin/user')}}">
                         {{ csrf_field() }}
 						<fieldset>
-                    
 										<div class="control-group">											
 											<label class="control-label" for="name">Site Title</label>
 											<div class="controls">
@@ -102,6 +101,7 @@
                         </span>
                         @endif
                       </div> <!-- /controls -->		
+
                       		
                     </div> <!-- /control-group -->
 										<div class="control-group">											
@@ -126,6 +126,8 @@
                                                 
                                               </div>	<!-- /controls -->			
                     </div>
+                  
+                  
                     <div class="control-group">											
 											<label class="control-label" for="descr1">Description</label>
 											<div class="controls">
@@ -165,7 +167,8 @@
                       </div> <!-- /controls -->		
                       		
                     </div> <!-- /control-group -->
-										
+                    
+                
 								
                 <!-- /widget-content --> 
         <!-- <div class="widget widget-nopad">
@@ -225,7 +228,30 @@
 										</div> <!-- /control-group -->
   
               </div>
+       
+        <div class="widget widget-nopad">
+          <div class="widget-header">
+            <h3> Plugin Information </h3>
+          </div>
+          <div class="widget-content">
+            <br/>
+            <div class="control-group">											
+              <label class="control-label" for="gmap_token">Google Map Token</label>
+              <div class="controls">
+                <input type="text" name="gmap_token" class="span4 {{$errors->has('gmap_token') ? ' errorClass' : ''}}" id="gmap_token" value="" placeholder="Google Map Token">
+                @if($errors->has('gmap_token'))
+                <span class="help-block">
+                  <p class="errorText">{{$errors->first('gmap_token')}}</p>
+                </span>
+                @endif
+              </div> <!-- /controls -->		
+                  
+            </div> <!-- /control-group -->
+
+      </div>
+          </div>
         </div>
+      </div>
         <div class="form-actions">
 											<button type="submit" class="btn btn-primary">Save</button> 
 											<button class="btn">Cancel</button>

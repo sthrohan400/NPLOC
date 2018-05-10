@@ -7,7 +7,8 @@ class UsersRequest extends FormRequest{
     }
     public function rules(){
         $rules = [
-            'company_id' => 'required',
+            'name' => 'required',
+            //'company_id' => 'required',
             'username' => 'required|unique:users',
             'email' => 'required|unique:users',
             'password' => 'required|min:6|alpha_num',

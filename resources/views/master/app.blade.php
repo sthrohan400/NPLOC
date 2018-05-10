@@ -4,22 +4,31 @@
 @include('master.meta')
 @include('master.css')
 </head>
+<div class="container-scroller">
 
-@include('master.navbar')
 @include('master.headermenu')
-<div class="main">
-  <div class="main-inner">
-    <div class="container">
-      <div class="row"> 
-        @include('master.message')    
-        @yield('content');
-      </div>
+
+<div class="container-fluid page-body-wrapper">
+  <div class="row row-offcanvas row-offcanvas-right">
+
+@include('master.navbar')  
+
+@yield('content'); 
+@include('master.footer')
 </div>
 </div>
-</div>  
+</div>
     
 <body>
-@include('master.footer')	
 @include('master.js')	
 </body>
+<script>
+//  $(document).ready(function() {
+//     $('#datepicker').datepicker();
+//   })
+  $(function () {
+    $('#datepicker').datepicker();
+});
+
+  </script>
 </html>

@@ -17,6 +17,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->integer('company_id');
             $table->string('name');
+            $table->string('address');
+            $table->string('phone');
+            $table->enum('membership_type',['free','monthly','yearly']);
+            $table->enum('gender',['male','female','other']);
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('profile_image');
@@ -27,7 +31,9 @@ class CreateUsersTable extends Migration
             $table->string('reset_token',90);
             $table->datetime('reset_token_expiry');
             $table->string('google2fa_secret_token');
+            $table->datetime('user_expiry_date')->nullable();
             $table->boolean('2fa_enabled')->default(0);
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

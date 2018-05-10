@@ -1,5 +1,6 @@
 <?php
 use Modules\RoutesServiceProvider;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,11 @@ Route::group(['prefix' => 'setup'], function() {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'admin'], function() { 
-	Route::get('/dashboard','Dashboard\DashboardController@index'); 
+	Route::get('/dashboard','Backend\DashboardController@index'); 
+	Route::get('/{controller}/search',function($controller,Request $request){
+		$controller = \App::make("App\\Http\\Controllers\\Backend\\".ucfirst($controller)."Controller");
+		return $controller->search($request);
+	});
 }); 
 
 

@@ -1,239 +1,264 @@
 @extends('master/app')
 @section('content')
-        <div class="span6">
-          <div class="widget widget-nopad">
-            <div class="widget-header"> <i class="icon-list-alt"></i>
-              <h3> Today's Stats</h3>
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-lg-12 grid-margin">
+      <div class="card overflow-hidden dashboard-curved-chart">
+        <div class="card-body mx-3">
+          <h2 class="card-title border-bottom-none">Recent Movement</h2>
+          <div class="align-items-center mb-5 justify-content-between d-lg-flex d-xl-flex d-md-block d-block">
+            <div id="chartLegend"></div>
+            <div class="nav-wrapper d-inline-block mt-4 mt-lg-0">
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Week</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Month</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Year</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Today</a>
+                </li>
+              </ul>
             </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <div class="widget big-stats-container">
-                <div class="widget-content">
-                  <h6 class="bigstats">A fully responsive premium quality admin template built on Twitter Bootstrap by <a href="http://www.egrappler.com" target="_blank">EGrappler.com</a>.  These are some dummy lines to fill the area.</h6>
-                  <div id="big_stats" class="cf">
-                    <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div>
-                    <!-- .stat -->
-                    
-                    <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">423</span> </div>
-                    <!-- .stat -->
-                    
-                    <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value">922</span> </div>
-                    <!-- .stat -->
-                    
-                    <div class="stat"> <i class="icon-bullhorn"></i> <span class="value">25%</span> </div>
-                    <!-- .stat --> 
-                  </div>
+          </div>
+        </div>
+        <div id="curved-line-chart" class="float-chart float-chart-mini"></div>
+      </div>
+    </div>
+  </div>
+  <!-- ROW ENDS -->
+  <div class="row">
+    <div class="col-lg-12 grid-margin">
+      <div class="card performance-cards">
+        <div class="card-body">
+          <div class="row">
+            <div class="col d-flex flex-row justify-content-center align-items-center">
+              <div class="wrapper icon-circle bg-success">
+                <i class="icon-rocket icons"></i>
+              </div>
+              <div class="wrapper text-wrapper">
+                <p class="text-dark">8954</p>
+                <p>Lifetime total sales</p>
+              </div>
+            </div>
+            <div class="col d-flex flex-row justify-content-center align-items-center">
+              <div class="wrapper icon-circle bg-danger">
+                <i class="icon-briefcase icons"></i>
+              </div>
+              <div class="wrapper text-wrapper">
+                <p class="text-dark">7841</p>
+                <p>Income amounts</p>
+              </div>
+            </div>
+            <div class="col d-flex flex-row justify-content-center align-items-center">
+              <div class="wrapper icon-circle bg-warning">
+                <i class="icon-umbrella icons"></i>
+              </div>
+              <div class="wrapper text-wrapper">
+                <p class="text-dark">6521</p>
+                <p>Total users</p>
+              </div>
+            </div>
+            <div class="col d-flex flex-row justify-content-center align-items-center">
+              <div class="wrapper icon-circle bg-primary">
+                <i class="icon-check icons"></i>
+              </div>
+              <div class="wrapper text-wrapper">
+                <p class="text-dark">325</p>
+                <p>Total visits</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ROW ENDS -->
+  <div class="row">
+    <div class="col-md-6 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-0">Statistics</h4>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-inline-block pt-3">
+              <div class="d-flex">
+                <h2 class="mb-0">$10,200</h2>
+                <div class="d-flex align-items-center ml-2">
+                  <i class="mdi mdi-clock text-muted"></i>
+                  <small class=" ml-1 mb-0">Updated: 9:10am</small>
                 </div>
-                <!-- /widget-content --> 
-                
+              </div>
+              <small class="text-gray">Raised from 89 orders.</small>
+            </div>
+            <div class="d-inline-block">
+              <div class="bg-success px-4 py-2 rounded">
+                <i class="mdi mdi-buffer text-white icon-lg"></i>
               </div>
             </div>
           </div>
-          <!-- /widget -->
-          <div class="widget widget-nopad">
-            <div class="widget-header"> <i class="icon-list-alt"></i>
-              <h3> Recent News</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-0">Daily Order</h4>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-inline-block pt-3">
+              <div class="d-flex">
+                <h2 class="mb-0">$2256</h2>
+                <div class="d-flex align-items-center ml-2">
+                  <i class="mdi mdi-clock text-muted"></i>
+                  <small class=" ml-1 mb-0">Updated: 05:42pm</small>
+                </div>
+              </div>
+              <small class="text-gray">hey, let’s have lunch together</small>
             </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <div id='calendar'>
+            <div class="d-inline-block">
+              <div class="bg-warning px-4 py-2 rounded">
+                <i class="mdi mdi-wallet text-white icon-lg"></i>
               </div>
             </div>
-            <!-- /widget-content --> 
           </div>
-          <!-- /widget -->
-          <div class="widget">
-            <div class="widget-header"> <i class="icon-file"></i>
-              <h3> Content</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <ul class="messages_layout">
-                <li class="from_user left"> <a href="#" class="avatar"><img src="img/message_avatar1.png"/></a>
-                  <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">John Smith</a> <span class="time">1 hour ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text"> As an interesting side note, as a head without a body, I envy the dead. There's one way and only one way to determine if an animal is intelligent. Dissect its brain! Man, I'm sore all over. I feel like I just went ten rounds with mighty Thor. </div>
-                  </div>
-                </li>
-                <li class="by_myself right"> <a href="#" class="avatar"><img src="img/message_avatar2.png"/></a>
-                  <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">Bender (myself) </a> <span class="time">4 hours ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text"> All I want is to be a monkey of moderate intelligence who wears a suit… that's why I'm transferring to business school! I had more, but you go ahead. Man, I'm sore all over. I feel like I just went ten rounds with mighty Thor. File not found. </div>
-                  </div>
-                </li>
-                <li class="from_user left"> <a href="#" class="avatar"><img src="img/message_avatar1.png"/></a>
-                  <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">Celeste Holm </a> <span class="time">1 Day ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text"> And I'd do it again! And perhaps a third time! But that would be it. Are you crazy? I can't swallow that. And I'm his friend Jesus. No, I'm Santa Claus! And from now on you're all named Bender Jr. </div>
-                  </div>
-                </li>
-                <li class="from_user left"> <a href="#" class="avatar"><img src="img/message_avatar2.png"/></a>
-                  <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">Mark Jobs </a> <span class="time">2 Days ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text"> That's the ONLY thing about being a slave. Now, now. Perfectly symmetrical violence never solved anything. Uh, is the puppy mechanical in any way? As an interesting side note, as a head without a body, I envy the dead. </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!-- /widget-content --> 
-          </div>
-          <!-- /widget --> 
         </div>
-        <!-- /span6 -->
-        <div class="span6">
-          <div class="widget">
-            <div class="widget-header"> <i class="icon-bookmark"></i>
-              <h3>Important Shortcuts</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <div class="shortcuts"> <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
-                                        class="shortcut-label">Apps</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Bookmarks</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Reports</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Comments</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
-                                                class="shortcut-label">Users</span> </a><a href="javascript:;" class="shortcut"><i
-                                                    class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-tag"></i><span class="shortcut-label">Tags</span> </a> </div>
-              <!-- /shortcuts --> 
-            </div>
-            <!-- /widget-content --> 
-          </div>
-          <!-- /widget -->
-          <div class="widget">
-            <div class="widget-header"> <i class="icon-signal"></i>
-              <h3> Area Chart Example</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
-              <!-- /area-chart --> 
-            </div>
-            <!-- /widget-content --> 
-          </div>
-          <!-- /widget -->
-          <div class="widget widget-table action-table">
-            <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>A Table Example</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <table class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <th> Free Resource </th>
-                    <th> Download</th>
-                    <th class="td-actions"> </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                
-                </tbody>
-              </table>
-            </div>
-            <!-- /widget-content --> 
-          </div>
-          <!-- /widget --> 
-          <div class="widget widget-nopad">
-            <div class="widget-header"> <i class="icon-list-alt"></i>
-              <h3> Recent News</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <ul class="news-items">
-                <li>
-                  
-                  <div class="news-item-date"> <span class="news-item-day">29</span> <span class="news-item-month">Aug</span> </div>
-                  <div class="news-item-detail"> <a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title" target="_blank">Thursday Roundup # 40</a>
-                    <p class="news-item-preview"> This is our web design and development news series where we share our favorite design/development related articles, resources, tutorials and awesome freebies. </p>
-                  </div>
-                  
-                </li>
-                <li>
-                  
-                  <div class="news-item-date"> <span class="news-item-day">15</span> <span class="news-item-month">Jun</span> </div>
-                  <div class="news-item-detail"> <a href="http://www.egrappler.com/retina-ready-responsive-app-landing-page-website-template-app-landing/" class="news-item-title" target="_blank">Retina Ready Responsive App Landing Page Website Template – App Landing</a>
-                    <p class="news-item-preview"> App Landing is a retina ready responsive app landing page website template perfect for software and application developers and small business owners looking to promote their iPhone, iPad, Android Apps and software products.</p>
-                  </div>
-                  
-                </li>
-                <li>
-                  
-                  <div class="news-item-date"> <span class="news-item-day">29</span> <span class="news-item-month">Oct</span> </div>
-                  <div class="news-item-detail"> <a href="http://www.egrappler.com/open-source-jquery-php-ajax-contact-form-templates-with-captcha-formify/" class="news-item-title" target="_blank">Open Source jQuery PHP Ajax Contact Form Templates With Captcha: Formify</a>
-                    <p class="news-item-preview"> Formify is a contribution to lessen the pain of creating contact forms. The collection contains six different forms that are commonly used. These open source contact forms can be customized as well to suit the need for your website/application.</p>
-                  </div>
-                  
-                </li>
-              </ul>
-            </div>
-            <!-- /widget-content --> 
-          </div>
-          <!-- /widget -->
+      </div>
+    </div>
+  </div>
+  <div class="row section social-section">
+    <div class="col-lg-4 grid-margin stretch-card">
+      <div class="social-card w-100 bg-facebook">
+        <div class="social-icon">
+          <i class="icon-social-facebook icons"></i>
         </div>
-        <!-- /span6 --> 
-<!-- /main -->
+        <div class="content">
+          <p>+ 1500</p>
+          <p>Facebook Likes</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 grid-margin stretch-card">
+      <div class="social-card w-100 bg-twitter">
+        <div class="social-icon">
+          <i class="icon-social-twitter icons"></i>
+        </div>
+        <div class="content">
+          <p>+574</p>
+          <p>Twitter Followers</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 grid-margin stretch-card">
+      <div class="social-card w-100 bg-dribbble">
+        <div class="social-icon">
+          <i class="icon-social-dribbble icons"></i>
+        </div>
+        <div class="content">
+          <p>+450</p>
+          <p>Dribble Shots</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ROW ENDS -->
+  <div class="row">
+    <div class="col-lg-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Manage Users</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start Date</th>
+                  <th>Assign</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Airi Satou</td>
+                  <td>Accountant</td>
+                  <td>Tokyo</td>
+                  <td>55</td>
+                  <td>2009/10/09</td>
+                  <td>$162,700</td>
+                </tr>
+                <tr>
+                  <td>Angelica Ramos</td>
+                  <td>Chief Executive Officer (CEO)</td>
+                  <td>London</td>
+                  <td>30</td>
+                  <td>2009/10/09</td>
+                  <td>$190,500</td>
+                </tr>
+                <tr>
+                  <td>Ashton Cox</td>
+                  <td>Regional Director</td>
+                  <td>San Francisco</td>
+                  <td>36</td>
+                  <td>2004/12/02</td>
+                  <td>$62,700</td>
+                </tr>
+                <tr>
+                  <td>Angelica Ramos</td>
+                  <td>Chief Executive Officer (CEO)</td>
+                  <td>London</td>
+                  <td>30</td>
+                  <td>2011/07/25</td>
+                  <td>$190,500</td>
+                </tr>
+                <tr>
+                  <td>Ashton Cox</td>
+                  <td>Regional Director</td>
+                  <td>San Francisco</td>
+                  <td>32</td>
+                  <td>2004/12/02</td>
+                  <td>$62,700</td>
+                </tr>
+                <tr>
+                  <td>Angelica Ramos</td>
+                  <td>Chief Executive Officer (CEO)</td>
+                  <td>London</td>
+                  <td>31</td>
+                  <td>2011/07/25</td>
+                  <td>$190,500</td>
+                </tr>
+                <tr>
+                  <td>Ashton Cox</td>
+                  <td>Regional Director</td>
+                  <td>Tokyo</td>
+                  <td>39</td>
+                  <td>2004/12/02</td>
+                  <td>$62,700</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex align-items-center justify-content-between flex-wrap">
+            <p class="mb-0">Showing 1 to 10 of 57 entries</p>
+            <nav>
+              <ul class="pagination rounded-separated pagination-info mt-3">
+                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ROW ENDS -->
+</div>
 
 @endsection

@@ -1,0 +1,217 @@
+@extends('master/app')
+@section('content')
+<div class="content-wrapper">
+        <div class="col-12 grid-margin">
+                @include('master.message')
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">User Form</h4>
+                  <form class="form-sample" method="POST" action="{{url('/admin/user/create')}}">
+                    {!! csrf_field() !!}
+                      <h4 class="card-description">
+                        Personal Info
+                      </h4>
+                      <br/>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Full Name</label>
+                            <div class="col-sm-9">
+                            <input type="text" class="form-control {{($errors->has('name')) ? 'errorInput': ''}}" name="name" value="{{old('name')}}"  />
+                            @if($errors->has('name'))
+                        <span class="help-block">
+                          <p class="errorText">{{$errors->first('name')}}</p>
+                        </span>
+                        @endif
+                            </div>
+                            
+                          </div>
+                          
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control {{($errors->has('phone')) ? 'errorInput': ''}} " name="phone" value="{{old('phone')}}"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gender</label>
+                            <div class="col-sm-9">
+                              <select class="form-control {{($errors->has('gender')) ? 'errorInput': ''}}" name="gender" >
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                              </select>
+                              @if($errors->has('gender'))
+                        <span class="help-block">
+                          <p class="errorText">{{$errors->first('gender')}}</p>
+                        </span>
+                        @endif
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Full Address</label>
+                            <div class="col-sm-9">
+                                    <textarea class="form-control {{($errors->has('address')) ? 'errorInput': ''}}" rows="5" name="address" value="{{old('address')}}"></textarea>
+                                    @if($errors->has('address'))
+                        <span class="help-block">
+                          <p class="errorText">{{$errors->first('address')}}</p>
+                        </span>
+                        @endif
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Profile Image</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="profile_image" class="file-upload-default">
+                                            <div class="input-group col-xs-12">
+                                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" id="img">
+                                            <span class="input-group-append">
+                                                <button class="file-upload-browse btn btn-info" type="button" onclick="openKCFinder(this)">Upload</button>
+                                            </span>
+                                            </div>
+                                        </div>
+                                      </div>
+                        </div>
+                        
+                      </div>
+                      <h4 class="card-description">
+                        User Login Information
+                      </h4><br/>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Username</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control {{($errors->has('username')) ? 'errorInput': ''}}" name="username" value="{{old('username')}}"/>
+                              @if($errors->has('username'))
+                                <span class="help-block">
+                                <p class="errorText">{{$errors->first('username')}}</p>
+                                </span>
+                                @endif
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control {{($errors->has('email')) ? 'errorInput': ''}}" name="email" value="{{old('email')}}"/>
+                              @if($errors->has('email'))
+                              <span class="help-block">
+                                <p class="errorText">{{$errors->first('email')}}</p>
+                              </span>
+                              @endif
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Password</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control {{($errors->has('password')) ? 'errorInput': ''}}" name="password" value="{{old('password')}}"/>
+                              @if($errors->has('password'))
+                              <span class="help-block">
+                                <p class="errorText">{{$errors->first('password')}}</p>
+                              </span>
+                              @endif
+                            
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Password Confirmation</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control {{($errors->has('password_confirmation')) ? 'errorInput': ''}}" name="password_confirmation" value="{{old('password_confirmation')}}"/>
+                              @if($errors->has('password_confirmation'))
+                              <span class="help-block">
+                                <p class="errorText">{{$errors->first('password_confirmation')}}</p>
+                              </span>
+                              @endif
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h4 class="card-description">
+                            Membership Information
+                      </h4>
+                      <br/>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">User Expiry Date</label>
+                            <div class="col-sm-9 " >
+                                <div class="input-group col-xs-12" >
+                                <input type="text" class="form-control file-upload-info" id="datepicker" placeholder="" >
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-info" type="button" ><i class=" fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">MemberShip Type</label>
+                            <div class="col-sm-9">
+                              <select class="form-control">
+                                <option>Free</option>
+                                <option>Monthly</option>
+                                <option>Yearly</option>
+                                
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-success mr-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+</div>
+<script type="text/javascript">
+  function openKCFinder(div) {
+    window.KCFinder = {
+        callBack: function(url) {
+            window.KCFinder = null;
+            //div.innerHTML = '<div style="margin:5px">Loading...</div>';
+            var img = new Image();
+            img.src = url;
+            var inputval = document.getElementById('img');
+            inputval.value = img.src;
+            // img.onload = function(){
+            //   document.getElementById('imgholder').value = img;
+            // }
+            img.onload = function() {
+                //div.innerHTML = '<img id="img" src="' + url + '" />';
+                var img = document.getElementById('imgholder');
+                img.innerHTML = '<img id="img" src="' + url + '" style="height:200px;width:200px;" class="img img-responsive"/>';
+                img.style.visibility = "visible";
+            }
+        }
+    };
+    window.open('/public/kcfinder/browse.php?type=images&dir=images/public',
+        'kcfinder_image', 'status=0, toolbar=0, location=0, menubar=0, ' +
+        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
+    );
+}
+</script>
+@endsection
