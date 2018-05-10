@@ -140,13 +140,13 @@
                 head_template += '<th>'+value.display;
                 if(!!value.sort){
                     if(orderby == (value.key+" ASC")){
-                         head_template += '<a href="#"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-sort-amount-desc" ></i></a></th>';
+                         head_template += '<a href="javascript:void(0)"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-sort-amount-desc" ></i></a></th>';
                     }
                     else if(orderby == ""){
-                        head_template += '<a href="#"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-long-arrow-down" ></i><i class="fa fa fa-long-arrow-up" ></i></a></th>';
+                        head_template += '<a href="javascript:void(0)"  data-key='+value.key+'" onclick="sortColumn(\''+value.key+'\',\'DESC\',this)"> <i class="fa fa fa-long-arrow-down" ></i><i class="fa fa fa-long-arrow-up" ></i></a></th>';
                     }
                     else
-                        head_template += '<a href="#" onclick="sortColumn(\''+value.key+'\',\'ASC\',this)" data-key="'+value.key+'"> <i class="fa fa fa-sort-amount-asc "></i></a>';
+                        head_template += '<a href="javascript:void(0)" onclick="sortColumn(\''+value.key+'\',\'ASC\',this)" data-key="'+value.key+'"> <i class="fa fa fa-sort-amount-asc "></i></a>';
                 }  
             })
             head_template += "<th> Option </th>";
@@ -218,13 +218,13 @@
             paginate_template += '</div></div>';
             paginate_template += '<div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="datatable-fixed-header_paginate">';
             paginate_template += '<ul class="pagination float-right">';
-            paginate_template += '<li class=" paginate-item previous" id="datatable-fixed-header_previous"><a href="#" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="0" tabindex="0" onclick="paginate('+0+')">First</a></li>';
+            paginate_template += '<li class=" paginate-item previous" id="datatable-fixed-header_previous"><a href="javascript:void(0)" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="0" tabindex="0" onclick="paginate('+0+')">First</a></li>';
             paginate_template += '<li class=" paginate-item  previous '+(previous > 0 ? "" : "disabled")+'" id="datatable-fixed-header_previous"><a href="#" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="0" tabindex="0" onclick="paginate('+(previous)+')">Previous</a></li>';
             for(var i=1; i <= show_no_of_pagination; i++){
-                paginate_template += '<li class=" paginate-item '+(i != data.page ? "" : "disabled")+'"><a href="#" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="'+i+'" tabindex="'+(i-1)+'" onclick="paginate('+i+')">'+i+'</a></li>';
+                paginate_template += '<li class=" paginate-item '+(i != data.page ? "" : "disabled")+'"><a href="javascript:void(0)" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="'+i+'" tabindex="'+(i-1)+'" onclick="paginate('+i+')">'+i+'</a></li>';
             }
-            paginate_template += '<li class="paginate-item   next" id="datatable-fixed-header_next"><a href="#" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="7" tabindex="0" onclick="paginate('+(next)+')">Next</a></li>';
-            paginate_template += '<li class=" paginate-item   next" id="datatable-fixed-header_next"><a href="#" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="7" tabindex="0" onclick="paginate('+(no_of_pagination-1)+')">Last</a></li>';
+            paginate_template += '<li class="paginate-item   next" id="datatable-fixed-header_next"><a href="javascript:void(0)" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="7" tabindex="0" onclick="paginate('+(next)+')">Next</a></li>';
+            paginate_template += '<li class=" paginate-item   next" id="datatable-fixed-header_next"><a href="javascript:void(0)" class="page-link" aria-controls="datatable-fixed-header" data-dt-idx="7" tabindex="0" onclick="paginate('+(no_of_pagination-1)+')">Last</a></li>';
             paginate_template += '</ul></div></div></div></div>';
 
             return paginate_template;

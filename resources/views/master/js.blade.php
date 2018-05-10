@@ -19,4 +19,18 @@
   <script src="{{URL::asset('stellar/js/calendar.js')}}"></script>
   <script src="{{URL::asset('stellar/js/paginate.js')}}"></script>
   <script src="{{URL::asset('custom/nepuzz-table.js')}}"></script>
+    <script src="{{URL::asset('custom/foundation-datepicker.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script> 
+<script>
+$(function(){
+  $('#fdatepicker').fdatepicker({
+    //initialDate: new Date(),
+    format: 'yyyy-mm-dd',
+    disableDblClickSelection: true,
+    leftArrow:'<<',
+    rightArrow:'>>',
+    closeIcon:'X',
+    closeButton: true
+  });
+});
+</script>

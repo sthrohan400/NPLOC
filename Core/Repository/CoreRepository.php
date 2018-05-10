@@ -12,10 +12,22 @@ class CoreRepository implements CoreInterface
 		$this->entityModel = new $ent;
 	}
 	public function getById($id){
-		return $this->entityModel->find($id);
+		try{
+			return $this->entityModel->find($id);
+		}
+		catch(\Exception $e){
+			return 255;
+		}
+		
 	}
 	public function getAll(){
-		return $this->entityModel->all();
+		try{
+			return $this->entityModel->all();
+		}
+		catch(\Exception $e){
+			return 255;
+		}
+		
 	}
 	public function getPaginate($val = 10){
 		return $this->entityModel->paginate($val);

@@ -5,9 +5,23 @@
 <!--                 @include('master.message') -->
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">User Form</h4>
-                  <form class="form-sample" method="POST" action="{{url('/admin/user/create')}}">
+                    <h4 class="card-title">Update User Form</h4>
+                    <br>
+                     <ul class="nav nav-tabs">
+                         <li class="nav-item">
+                           <a class="nav-link active" data-toggle="tab" href="#home">User Update</a>
+                         </li>
+                         <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#menu1">Password Update</a>
+                         </li>
+                         
+                       </ul>
+
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+         <form class="form-sample" method="POST" action="{{url('/admin/user/'.$data['id'].'/edit')}}">
                     {!! csrf_field() !!}
+
                       <h4 class="card-description">
                         Personal Info
                       </h4>
@@ -17,7 +31,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Full Name</label>
                             <div class="col-sm-9">
-                            <input type="text" class="form-control {{($errors->has('name')) ? 'errorInput': ''}}" name="name" value="{{old('name')}}"  />
+                            <input type="text" class="form-control {{($errors->has('name')) ? 'errorInput': ''}}" name="name" value="{{$data['name']}}"  />
                             @if($errors->has('name'))
                         <span class="help-block">
                           <p class="errorText">{{$errors->first('name')}}</p>
@@ -32,7 +46,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Phone</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control {{($errors->has('phone')) ? 'errorInput': ''}} " name="phone" value="{{old('phone')}}"/>
+                              <input type="text" class="form-control {{($errors->has('phone')) ? 'errorInput': ''}} " name="phone" value="{{$data['phone']}}"/>
                             </div>
                           </div>
                         </div>
@@ -43,9 +57,9 @@
                             <label class="col-sm-3 col-form-label">Gender</label>
                             <div class="col-sm-9">
                               <select class="form-control {{($errors->has('gender')) ? 'errorInput': ''}}" name="gender" >
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
+                                <option value="male" {{$data['gender'] == 'male' ? 'selected' : ''}}>Male</option>
+                                <option value="female" {{$data['gender'] == 'female' ? 'selected' : ''}}>Female</option>
+                                <option value="other" {{$data['gender'] == 'other' ? 'selected' : ''}}>Other</option>
                               </select>
                               @if($errors->has('gender'))
                         <span class="help-block">
@@ -59,7 +73,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Full Address</label>
                             <div class="col-sm-9">
-                                    <textarea class="form-control {{($errors->has('address')) ? 'errorInput': ''}}" rows="5" name="address" >{{old('name')}}</textarea>
+                                    <textarea class="form-control {{($errors->has('address')) ? 'errorInput': ''}}" rows="5" name="address" >{{$data['address']}}</textarea>
                                     @if($errors->has('address'))
                         <span class="help-block">
                           <p class="errorText">{{$errors->first('address')}}</p>
@@ -76,7 +90,7 @@
                                         <div class="col-sm-9">
                                             <input type="file"  class="file-upload-default">
                                             <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" placeholder="Upload Image" id="nepuzzimg" name="profile_image">
+                                            <input type="text" class="form-control file-upload-info" placeholder="Upload Image" id="nepuzzimg" name="profile_image"  value="{{$data['profile_image']}}">
                                             <span class="input-group-append">
                                                 <button class="file-upload-browse btn btn-info" type="button" onclick="openKCFinder(this)">Upload</button>
                                             </span>
@@ -94,7 +108,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Username</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control {{($errors->has('username')) ? 'errorInput': ''}}" name="username" value="{{old('username')}}"/>
+                              <input type="text" class="form-control {{($errors->has('username')) ? 'errorInput': ''}}" name="username" value="{{$data['username']}}"/>
                               @if($errors->has('username'))
                                 <span class="help-block">
                                 <p class="errorText">{{$errors->first('username')}}</p>
@@ -107,7 +121,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control {{($errors->has('email')) ? 'errorInput': ''}}" name="email" value="{{old('email')}}"/>
+                              <input type="text" class="form-control {{($errors->has('email')) ? 'errorInput': ''}}" name="email" value="{{$data['email']}}"/>
                               @if($errors->has('email'))
                               <span class="help-block">
                                 <p class="errorText">{{$errors->first('email')}}</p>
@@ -118,12 +132,66 @@
                           </div>
                         </div>
                       </div>
+                     
+                      <h4 class="card-description">
+                            Membership Information
+                      </h4>
+                      <br/>
                       <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">User Expiry Date</label>
+                            <div class="col-sm-9 " >
+                                <div class="input-group col-xs-12" >
+                                <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder="" name="user_expiry_date" value="{{$data['user_expiry_date']}}">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-info" type="button" ><i class=" fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">MemberShip Type</label>
+                            <div class="col-sm-9">
+                              <select class="form-control" name="membership_type">
+                                <option value="free" {{$data['membership_type'] == 'free' ? 'selected' : ''}}>Free</option>
+                                <option value="monthly" {{$data['membership_type'] == 'monthly' ? 'selected' : ''}}>Monthly</option>
+                                <option value="yearly" {{$data['membership_type'] == 'yearly' ? 'selected' : ''}}>Yearly</option>
+                                
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Status</label>
+                            <div class="col-sm-9">
+                              <select class="form-control" name="status">
+                                <option value="1" {{$data['status'] == 1 ? 'selected' : ''}}>Active</option>
+                                <option value="0" {{$data['status'] == 0 ? 'selected' : ''}}>Inactive</option>
+                              
+                                
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+                      <button type="submit" class="btn btn-success mr-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+         </form>
+     
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+          <form class="form-sample" method="POST" action="{{url('/admin/user/'.$data['id'].'/edit')}}">
+                {!! csrf_field() !!}
+                <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Password</label>
                             <div class="col-sm-9">
-                              <input type="password" class="form-control {{($errors->has('password')) ? 'errorInput': ''}}" name="password" value="{{old('password')}}"/>
+                              <input type="password" class="form-control {{($errors->has('password')) ? 'errorInput': ''}}" name="password" value=""/>
                               @if($errors->has('password'))
                               <span class="help-block">
                                 <p class="errorText">{{$errors->first('password')}}</p>
@@ -148,54 +216,15 @@
                           </div>
                         </div>
                       </div>
-                      <h4 class="card-description">
-                            Membership Information
-                      </h4>
-                      <br/>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">User Expiry Date</label>
-                            <div class="col-sm-9 " >
-                                <div class="input-group col-xs-12" >
-                                <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder="" >
-                                    <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-info" type="button" ><i class=" fa fa-calendar"></i></button>
-                                    </span>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">MemberShip Type</label>
-                            <div class="col-sm-9">
-                              <select class="form-control" name="membership_type">
-                                <option value="free">Free</option>
-                                <option value="monthly">Monthly</option>
-                                <option value="yearly">Yearly</option>
-                                
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Status</label>
-                            <div class="col-sm-9">
-                              <select class="form-control" name="status">
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                              
-                                
-                              </select>
-                            </div>
-                          </div>
-                      </div>
-                      <button type="submit" class="btn btn-success mr-2">Submit</button>
+                       <button type="submit" class="btn btn-success mr-2">Submit</button>
                       <button class="btn btn-light">Cancel</button>
-                    </form>
+
+         </form>
+    </div>
+  </div>
+</div>
+
+                  
                   </div>
                 </div>
               </div>

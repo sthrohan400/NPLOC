@@ -3,7 +3,7 @@ namespace Modules\Users;
 use Core\Model\CoreModel;
 class UsersModel extends CoreModel{
     public $table = "users";
-    protected $guarded =  [  'password','verified' ];
+    protected $guarded =  ['password','verified' ];
     protected $fillable = [ 'email','username','name','address',
     						'phone','membership_type','gender',
     						'profile_image','status','password',
