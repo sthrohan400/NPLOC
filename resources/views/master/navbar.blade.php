@@ -101,5 +101,27 @@
               </a>
             </li>
 
+            <li class="nav-item nav-category">
+              <span class="nav-link">Application Tools</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('ViewUser')}}">
+                <span class="menu-title">Trail</span>
+                <i class="icon-pie-chart menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/charts/flot-chart.html">
+                <span class="menu-title">Facilities</span>
+                <i class="icon-pie-chart menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/charts/flot-chart.html">
+                <span class="menu-title">Packages</span>
+                <i class="icon-pie-chart menu-icon"></i>
+              </a>
+            </li>
+
           </ul>
         </nav>
