@@ -104,7 +104,6 @@
         $.getData = function(){
             $('#overlay').show().css('display', 'flex');
             var sURL = $.getBaseUrl()+"/search/"+"?page="+page+"&pagesize="+pagesize+"&keywords="+keywords+"&orderby="+orderby;
-           
             $.get(sURL).then(function(res){
               $('#overlay').hide();
               $.makeTemplate(res);         

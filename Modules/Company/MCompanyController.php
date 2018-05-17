@@ -12,11 +12,17 @@ class MCompanyController extends Controller{
 
     }   
     public function index(Request $request){
-       //return $request->session()->all();
         return view('company.index');
     }
     public function store(UsersRequest $request){
             $input = $request->except(['password_confirmation']);
             return $this->companyRepo->store($input);
+    }
+    public function search(Request $request){
+        $page = $request->get('page',1);
+        $pagesize = $request->get('pagesize',10);
+        $keywords = $request->get('keywords',null);
+        $orderby = $request->get('orderby',null);
+        return $this->companyRepo->partial($page,$pagesize,$keywords,$orderby);
     }
 }

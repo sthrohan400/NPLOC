@@ -89,7 +89,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/charts/flot-chart.html">
+            <a class="nav-link" href="{{route('ViewCompany')}}">
                 <span class="menu-title">Company Settings</span>
                 <i class="icon-pie-chart menu-icon"></i>
               </a>

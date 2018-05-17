@@ -3,9 +3,9 @@
 <div class="content-wrapper">
     <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Company Table
+          <h4 class="card-title">Users Table
             <span class="float-right">
-            <a href="{{route('CompanyForm')}}" <button class="btn btn-success btn-fw"><i class="fa fa-plus"></i> Company</button></a>
+            <a href="{{route('FacilitiesForm')}}" <button class="btn btn-success btn-fw"><i class="fa fa-plus"></i> Users</button></a>
             </span>
           </h4>
           <div class="row">
