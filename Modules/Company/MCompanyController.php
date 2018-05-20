@@ -14,10 +14,14 @@ class MCompanyController extends Controller{
     public function index(Request $request){
         return view('company.index');
     }
+    public function create(){
+        return view('company.create');
+    }
     public function store(UsersRequest $request){
             $input = $request->except(['password_confirmation']);
             return $this->companyRepo->store($input);
     }
+
     public function search(Request $request){
         $page = $request->get('page',1);
         $pagesize = $request->get('pagesize',10);

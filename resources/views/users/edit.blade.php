@@ -231,7 +231,7 @@
               <div id="nepuzz-table" data-url="{{url()->current()}}" class="dataTables_wrapper form-inline dt-bootstrap no-footer">    
             </div> 
 </div>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   function openKCFinder(div) {
     window.KCFinder = {
         callBack: function(url) {
@@ -257,5 +257,5 @@
         'directories=0, resizable=1, scrollbars=0, width=800, height=600'
     );
 }
-</script>
+</script> --}}
 @endsection

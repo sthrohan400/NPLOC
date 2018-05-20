@@ -11,4 +11,5 @@
 <link rel="stylesheet" href="{{URL::asset('custom/nepuzz-table.css')}}">
 <link rel="stylesheet" href="{{URL::asset('custom/foundation-datepicker.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"/>
 <!-- datepicker -->

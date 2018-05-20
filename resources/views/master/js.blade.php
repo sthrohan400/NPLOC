@@ -23,6 +23,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script> 
 <script>
 $(function(){
+  $('.fdatepickerbutton').click(function(){
+    $('#fdatepicker').fdatepicker().focus();
+  })
   $('#fdatepicker').fdatepicker({
     //initialDate: new Date(),
     format: 'yyyy-mm-dd',
