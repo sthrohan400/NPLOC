@@ -330,6 +330,13 @@ class ComposerStaticInit2c26f4388da2a8bdfbcd08080bc83933
     );
 
     public static $prefixesPsr0 = array (
+        'W' => 
+        array (
+            'Webpatser\\Uuid' => 
+            array (
+                0 => __DIR__ . '/..' . '/webpatser/laravel-uuid/src',
+            ),
+        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -377,6 +384,7 @@ class ComposerStaticInit2c26f4388da2a8bdfbcd08080bc83933
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Backend\\CompanyController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/CompanyController.php',
         'App\\Http\\Controllers\\Backend\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/DashboardController.php',
+        'App\\Http\\Controllers\\Backend\\FacilitiesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/FacilitiesController.php',
         'App\\Http\\Controllers\\Backend\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/UserController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\FrontendPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontendPageController.php',
@@ -460,7 +468,9 @@ class ComposerStaticInit2c26f4388da2a8bdfbcd08080bc83933
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Core\\Email' => __DIR__ . '/../..' . '/Core/Email.php',
         'Core\\Interfaces\\CoreInterface' => __DIR__ . '/../..' . '/Core/Interfaces/CoreInterface.php',
+        'Core\\MessageBag' => __DIR__ . '/../..' . '/Core/MessageBag.php',
         'Core\\Model\\CoreModel' => __DIR__ . '/../..' . '/Core/Model/CoreModel.php',
         'Core\\Repository\\CoreRepository' => __DIR__ . '/../..' . '/Core/Repository/CoreRepository.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
@@ -1990,7 +2000,18 @@ class ComposerStaticInit2c26f4388da2a8bdfbcd08080bc83933
         'Modules\\Company\\CompanyRepository' => __DIR__ . '/../..' . '/Modules/Company/CompanyRepository.php',
         'Modules\\Company\\CompanyRequest' => __DIR__ . '/../..' . '/Modules/Company/CompanyRequest.php',
         'Modules\\Company\\MCompanyController' => __DIR__ . '/../..' . '/Modules/Company/MCompanyController.php',
+        'Modules\\Facilities\\FacilitiesInterface' => __DIR__ . '/../..' . '/Modules/Facilities/FacilitiesInterface.php',
+        'Modules\\Facilities\\FacilitiesModel' => __DIR__ . '/../..' . '/Modules/Facilities/FacilitiesModel.php',
+        'Modules\\Facilities\\FacilitiesRepository' => __DIR__ . '/../..' . '/Modules/Facilities/FacilitiesRepository.php',
+        'Modules\\Facilities\\FacilitiesRequest' => __DIR__ . '/../..' . '/Modules/Facilities/TrailRequest.php',
+        'Modules\\Facilities\\MFacilitiesController' => __DIR__ . '/../..' . '/Modules/Facilities/MTrailController.php',
         'Modules\\RoutesServiceProvider' => __DIR__ . '/../..' . '/Modules/RoutesServiceProvider.php',
+        'Modules\\Trail\\MTrailController' => __DIR__ . '/../..' . '/Modules/Trail/MTrailController.php',
+        'Modules\\Trail\\TrailInterace' => __DIR__ . '/../..' . '/Modules/Trail/TrailInterface.php',
+        'Modules\\Trail\\TrailModel' => __DIR__ . '/../..' . '/Modules/Trail/TrailModel.php',
+        'Modules\\Trail\\TrailRepository' => __DIR__ . '/../..' . '/Modules/Trail/TrailRepository.php',
+        'Modules\\Trail\\TrailRequest' => __DIR__ . '/../..' . '/Modules/Trail/TrailRequest.php',
+        'Modules\\Users\\FacilitiesRequest' => __DIR__ . '/../..' . '/Modules/Facilities/FacilitiesRequest.php',
         'Modules\\Users\\MUsersController' => __DIR__ . '/../..' . '/Modules/Users/MUsersController.php',
         'Modules\\Users\\UsersInterface' => __DIR__ . '/../..' . '/Modules/Users/UsersInterface.php',
         'Modules\\Users\\UsersModel' => __DIR__ . '/../..' . '/Modules/Users/UsersModel.php',
@@ -3748,6 +3769,8 @@ class ComposerStaticInit2c26f4388da2a8bdfbcd08080bc83933
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+        'Webpatser\\Uuid\\Uuid' => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid/Uuid.php',
+        'Webpatser\\Uuid\\UuidServiceProvider' => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid/UuidServiceProvider.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
         'Whoops\\Exception\\Frame' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Frame.php',

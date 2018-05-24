@@ -22,3 +22,6 @@
 	height: 70px;
 	width: 70px;
 }
+.table thead th i{
+    margin-left: 0 !important;
+}

@@ -17,7 +17,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label"> Title</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control {{($errors->has('title')) ? 'errorInput': ''}}" name="title" value="{{old('title')}}"  />
+                                    <input type="text" class="form-control {{($errors->has('title')) ? 'errorInput': ''}}" name="title" value="{{$data['title']}}"  />
                                     @if($errors->has('title'))
                                         <span class="help-block">
                                         <p class="errorText">{{$errors->first('title')}}</p>
@@ -32,7 +32,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label"> Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control {{($errors->has('name')) ? 'errorInput': ''}}" name="name" value="{{old('name')}}"  />
+                                <input type="text" class="form-control {{($errors->has('name')) ? 'errorInput': ''}}" name="name" value="{{$data['name']}}"  />
                                 @if($errors->has('name'))
                                     <span class="help-block">
                                     <p class="errorText">{{$errors->first('name')}}</p>
@@ -50,7 +50,7 @@
                             <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Email </label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control {{($errors->has('email')) ? 'errorInput': ''}} " name="email" value="{{old('email')}}"/>
+                                    <input type="text" class="form-control {{($errors->has('email')) ? 'errorInput': ''}} " name="email" value="{{$data['email']}}"/>
                                     @if($errors->has('email'))
                                     <span class="help-block">
                                     <p class="errorText">{{$errors->first('email')}}</p>
@@ -64,7 +64,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Email (Optional)</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control {{($errors->has('email1')) ? 'errorInput': ''}} " name="email1" value="{{old('email1')}}"/>
+                              <input type="text" class="form-control {{($errors->has('email1')) ? 'errorInput': ''}} " name="email1" value="{{$data['email1']}}"/>
                             </div>
                           </div>
                         </div>
@@ -74,7 +74,7 @@
                             <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Phone (Mobile)</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control {{($errors->has('phone')) ? 'errorInput': ''}} " name="phone" value="{{old('phone')}}"/>
+                                    <input type="text" class="form-control {{($errors->has('phone')) ? 'errorInput': ''}} " name="phone" value="{{$data['phone']}}"/>
                                   </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Phone (Telephone)</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control {{($errors->has('phone1')) ? 'errorInput': ''}} " name="phone1" value="{{old('phone1')}}"/>
+                              <input type="text" class="form-control {{($errors->has('phone1')) ? 'errorInput': ''}} " name="phone1" value="{{$data['phone1']}}"/>
                             </div>
                           </div>
                         </div>
@@ -92,7 +92,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Full Address</label>
                             <div class="col-sm-9">
-                                    <textarea class="form-control {{($errors->has('addr1')) ? 'errorInput': ''}}" rows="5" name="addr1" >{{old('name')}}</textarea>
+                                    <textarea class="form-control {{($errors->has('addr1')) ? 'errorInput': ''}}" rows="5" name="addr1" >{{$data['addr1']}}</textarea>
                                     @if($errors->has('addr1'))
                                         <span class="help-block">
                                         <p class="errorText">{{$errors->first('addr1')}}</p>
@@ -107,7 +107,7 @@
                                     <div class="col-sm-9">
                                         <input type="file"  class="file-upload-default">
                                         <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" placeholder="Upload Image" id="nepuzzimg" name="logo">
+                                        <input type="text" class="form-control file-upload-info" placeholder="Upload Image" id="nepuzzimg" name="logo" value="{{$data['logo']}}">
                                             <span class="input-group-append">
                                                 <button class="file-upload-browse btn btn-info" type="button" onclick="openKCFinder(this)">Upload</button>
                                             </span>
@@ -124,7 +124,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Meta Title</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control file-upload-info"  placeholder=""   name="meta_title" >
+                                <input type="text" class="form-control file-upload-info"  placeholder=""   name="meta_title" value="{{$data['meta_title']}}">
                                 </div>
                               </div>
                           </div>
@@ -132,7 +132,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Meta Keywords</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control file-upload-info"  placeholder=""   name="meta_keywords" >
+                                    <input type="text" class="form-control file-upload-info"  placeholder=""   name="meta_keywords" value="{{$data['meta_keywords']}}">
                                 </div>
                               </div>
                           </div>
@@ -142,7 +142,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Meta Description</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control file-upload-info"  placeholder=""   name="meta_description" >
+                                    <input type="text" class="form-control file-upload-info"  placeholder=""   name="meta_description" value="{{$data['meta_description']}}">
                                 </div>
                               </div>
                           </div>
@@ -152,7 +152,7 @@
                                       <div class="col-sm-9">
                                           <input type="file"  class="file-upload-default">
                                           <div class="input-group col-xs-12">
-                                              <input type="text" class="form-control file-upload-info" placeholder="Upload Image" id="nepuzzimg" name="meta_logo">
+                                              <input type="text" class="form-control file-upload-info" placeholder="Upload Image" id="nepuzzimg" name="meta_logo" value="{{$data['meta_logo']}}">
                                               <span class="input-group-append">
                                                   <button class="file-upload-browse btn btn-info" type="button" onclick="openKCFinder(this)">Upload</button>
                                               </span>
@@ -172,7 +172,7 @@
                             <label class="col-sm-3 col-form-label">Subscription Expiry Date</label>
                             <div class="col-sm-9 " >
                                 <div class="input-group col-xs-12" >
-                                <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder=""   name="subscription_expiry">
+                                <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder=""   name="subscription_expiry" value="{{$data['subscription_expiry']}}">
                                     <span class="input-group-append">
                                         <button class="file-upload-browse btn btn-info fdatepickerbutton" type="button" ><i class=" fa fa-calendar"></i></button>
                                     </span>
@@ -189,7 +189,7 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Google Map Token</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder=""   name="gmap_token">
+                              <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder=""   name="gmap_token" value="{{$data['gmap_token']}}">
                               @if($errors->has('gmap_token'))
                                     <span class="help-block">
                                     <p class="errorText">{{$errors->first('gmap_token')}}</p>
@@ -205,7 +205,7 @@
                           <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Site_Token</label>
                               <div class="col-sm-9">
-                                  <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder=""   name="site_token" disabled>
+                                  <input type="text" class="form-control file-upload-info" id="fdatepicker" placeholder=""   name="site_token" value="{{$data['site_token']}}" disabled>
                               </div>
                             </div>
                         </div>
@@ -214,8 +214,8 @@
                               <label class="col-sm-3 col-form-label">Status</label>
                               <div class="col-sm-9">
                                 <select class="form-control" name="status">
-                                  <option value="1">Active</option>
-                                  <option value="0">Inactive</option>
+                                <option value="1" {{$data['status'] ? 'selected' : ''}}>Active</option>
+                                  <option value="0" {{$data['status'] ? '' : 'selected'}}>Inactive</option>
                                 
                                   
                                 </select>

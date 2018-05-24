@@ -7,9 +7,17 @@ class CoreRepository implements CoreInterface
 {
 	protected $entityModel;
 	protected $ent;
-	public function __construct($myModel){
+	protected $viewModel;
+	public function __construct($myModel,$myViewModel = null){
 		$ent = $myModel;
 		$this->entityModel = new $ent;
+		if(isset($myViewModel)){
+			$this->viewModel = new $myViewModel;
+		}
+		else{
+			$this->viewModel = new $ent;
+		}
+		return $this->viewModel;
 	}
 	public function getById($id){
 		try{
@@ -75,12 +83,12 @@ class CoreRepository implements CoreInterface
 		$off = ($page - 1) >= 0 ? ($page -1) : 0; 	
 		$offset = $off * $pagesize;
 		$limit = $pagesize;
-		$sql = "SELECT * FROM ". $this->entityModel->table;
+		$sql = "SELECT * FROM ". $this->viewModel->table;
 		$sql .= " WHERE (";
 		$sql .= " deleted_at IS NULL ";
 		if(isset($keywords)){
 			$sql .= " AND (";
-			$searchableFields = $this->entityModel->searchableFields;
+			$searchableFields = $this->viewModel->searchableFields;
 			$sizeFields = count($searchableFields);
 			foreach($searchableFields as $key => $field){
 				if($key <= 0)
@@ -97,14 +105,14 @@ class CoreRepository implements CoreInterface
 		$sql .= " OFFSET ".$offset;
 		$response = [];
 		$result =  DB::select(DB::raw($sql));
-		$countsql = "SELECT COUNT(*) as count FROM ".$this->entityModel->table." WHERE deleted_at IS NULL";
+		$countsql = "SELECT COUNT(*) as count FROM ".$this->viewModel->table." WHERE deleted_at IS NULL";
 		$total = DB::select(DB::raw($countsql));
 		//return ($total);
 		$response['total'] = $total[0]->count;
 		$response['rows'] = $result;
 		$response['page'] = $page;
 		$response['pagesize'] = $pagesize;
-		$response['fields'] = $this->entityModel->displayTableFields; 
+		$response['fields'] = $this->viewModel->displayTableFields; 
 		return $response;	
 	}
 	

@@ -7,11 +7,12 @@ class CompanyRequest extends FormRequest{
     }
     public function rules(){
         $rules = [
-            'company_id' => 'required',
-            'username' => 'required|unique:users',
-            'email' => 'required|unique:users',
-            'password' => 'required|min:6|alpha_num',
-            'password_confirmation' => 'required|confirmed'
+            'title' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'logo' => 'required',
+            'gmap_token' => 'required',
+            'subscription_expiry' =>'required'
         ];
         return $rules;
     }
