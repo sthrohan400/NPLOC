@@ -1,26 +1,18 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateTrail extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        //
         Schema::create('languages', function(Blueprint $table) {
              $table->increments('id');
              $table->string('name');
              $table->string('code')->unique();
              $table->timestamps();
              $table->softDeletes();
-        }
+        });
 
         Schema::create('trails', function(Blueprint $table) {
             $table->increments('id');
@@ -52,6 +44,7 @@ class CreateTrail extends Migration
         Schema::create('spots', function(Blueprint $table) {
              $table->increments('id');
              $table->integer('lang_id');
+             $table->enum('type',['facillities','default']);
              $table->string('name');
              $table->string('short_descr')->nullable();
              $table->text('descr');
@@ -61,17 +54,10 @@ class CreateTrail extends Migration
              $table->boolean('status')->default(0);
              $table->timestamps();
              $table->softDeletes();
-        }
+        });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        //
         Schema::dropIfExists('languages');
         Schema::dropIfExists('trails');
         Schema::dropIfExists('trail_files');
