@@ -12,7 +12,6 @@ class MTrailController extends Controller{
 
     }   
     public function index(Request $request){
-       //return $request->session()->all();
         return view('company.index');
     }
     public function store(UsersRequest $request){

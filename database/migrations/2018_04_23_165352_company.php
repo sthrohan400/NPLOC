@@ -31,6 +31,8 @@ class Company extends Migration
             $table->string('title');
 			$table->string('name');
             $table->string('email');
+            $table->string('addr1');
+            $table->string('addr2');
             $table->text('descr1');
             $table->text('descr2');
             $table->text('descr3');
