@@ -8,6 +8,7 @@ class RoutesServiceProvider {
         require_once(base_path('Modules/Users/routes.php'));
         require_once(base_path('Modules/Company/routes.php'));
         require_once(base_path('Modules/Facilities/routes.php'));
+        require_once(base_path('Modules/Trail/routes.php'));
     }
 
 }

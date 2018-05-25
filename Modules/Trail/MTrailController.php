@@ -12,10 +12,22 @@ class MTrailController extends Controller{
 
     }   
     public function index(Request $request){
-        return view('company.index');
+        return view('trail.index');
     }
-    public function store(UsersRequest $request){
-            $input = $request->except(['password_confirmation']);
-            return $this->trailRepo->store($input);
+   public function search(Request $request){
+        $page = $request->get('page',1);
+        $pagesize = $request->get('pagesize',10);
+        $keywords = $request->get('keywords',null);
+        $orderby = $request->get('orderby',null);
+        return $this->trailRepo->partial($page,$pagesize,$keywords,$orderby);
+    }
+    public function delete($id){
+        $response =  $this->trailRepo->destroy($id);
+        return json_encode($response);
+    }
+    public function multipleDelete(Request $request){
+            $ids =  $request->input('ids');
+            $response = $this->trailRepo->multipleDestroy($ids);
+            return $response;
     }
 }

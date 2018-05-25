@@ -1,0 +1,30 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `neploc_db`.`companyinfo` AS
+    SELECT 
+        `t1`.`id` AS `id`,
+        `t1`.`code` AS `code`,
+        `t1`.`site_token` AS `site_token`,
+        `t2`.`company_id` AS `company_id`,
+        `t2`.`title` AS `title`,
+        `t2`.`name` AS `name`,
+        `t2`.`email` AS `email`,
+        `t2`.`addr1` AS `addr1`,
+        `t2`.`addr2` AS `addr2`,
+        `t2`.`descr1` AS `descr1`,
+        `t2`.`descr2` AS `descr2`,
+        `t2`.`descr3` AS `descr3`,
+        `t2`.`phone1` AS `phone1`,
+        `t2`.`phone2` AS `phone2`,
+        `t2`.`logo` AS `logo`,
+        `t2`.`meta_title` AS `meta_title`,
+        `t2`.`meta_description` AS `meta_description`,
+        `t2`.`meta_keywords` AS `meta_keywords`,
+        `t2`.`created_at` AS `created_at`,
+        `t2`.`updated_at` AS `updated_at`,
+        `t2`.`deleted_at` AS `deleted_at`
+    FROM
+        (`neploc_db`.`company_info` `t2`
+        LEFT JOIN `neploc_db`.`company` `t1` ON ((`t2`.`company_id` = `t1`.`id`)))

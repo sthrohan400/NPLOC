@@ -58,7 +58,7 @@ class CreateTrail extends Migration
         Schema::create('spots', function(Blueprint $table) {
              $table->increments('id');
              $table->integer('lang_id');
-             $table->enum('type',['facillities','default']);
+             $table->enum('type',['facilities','default']);
              $table->string('name');
              $table->string('short_descr')->nullable();
              $table->text('descr');

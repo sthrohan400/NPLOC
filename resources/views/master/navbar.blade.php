@@ -105,7 +105,7 @@
               <span class="nav-link">Application Tools</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="{{route('ViewTrail')}}">
                 <span class="menu-title">Trail</span>
                 <i class="icon-pie-chart menu-icon"></i>
               </a>

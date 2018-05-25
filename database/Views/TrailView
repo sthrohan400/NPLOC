@@ -1,0 +1,59 @@
+select t1.name as trail_name,t1.id as id,t1.is_up as is_up,(select c2.name from company c1 join company_info c2 on c2.company_id = c1.id  where c1.id = t1.company_id) as company_name,
+(select name from languages where id = t1.lang_id) as lang , (select count(*) from trail_files where (trails_id = t1.id and type = 'image' )) as total_image,
+(select count(*) from trail_files where (trails_id = t1.id and type = 'video' )) as total_video,
+(select count(*) from trail_files where (trails_id = t1.id and type = 'audio' ))
+ as total_audio,(select count(*) from trails_spots left join spots on spots.id = trails_spots.trails_id where (spots.id = t1.id and spots.type ='default')) as total_spots,(select count(*) from trails_spots left join spots on spots.id = trails_spots.trails_id where (spots.id = t1.id and spots.type ='facilities')) as total_facilities from trails t1
+	
+
+
+
+
+
+
+
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `neploc_db`.`trailinfo` AS
+    SELECT 
+        `t1`.`name` AS `trail_name`,
+        `t1`.`id` AS `id`,
+        `t1`.`status`,
+        `t1`.`deleted_at`,
+        `t1`.`created_at`,
+        `t1`.`updated_at`,
+        `t1`.`is_up` AS `is_up`,
+        (SELECT 
+                `c2`.`name`
+            FROM
+                (`neploc_db`.`company` `c1`
+                JOIN `neploc_db`.`company_info` `c2` ON ((`c2`.`company_id` = `c1`.`id`)))
+            WHERE
+                (`c1`.`id` = `t1`.`company_id`)) AS `company_name`,
+        (SELECT 
+                `neploc_db`.`languages`.`name`
+            FROM
+                `neploc_db`.`languages`
+            WHERE
+                (`neploc_db`.`languages`.`id` = `t1`.`lang_id`)) AS `lang`,
+        (SELECT 
+                COUNT(0)
+            FROM
+                (`neploc_db`.`trails_spots`
+                LEFT JOIN `neploc_db`.`spots` ON ((`neploc_db`.`spots`.`id` = `neploc_db`.`trails_spots`.`trails_id`)))
+            WHERE
+                ((`neploc_db`.`spots`.`id` = `t1`.`id`)
+                    AND (`neploc_db`.`spots`.`type` = 'default'))) AS `total_spots`,
+        (SELECT 
+                COUNT(0)
+            FROM
+                (`neploc_db`.`trails_spots`
+                LEFT JOIN `neploc_db`.`spots` ON ((`neploc_db`.`spots`.`id` = `neploc_db`.`trails_spots`.`trails_id`)))
+            WHERE
+                ((`neploc_db`.`spots`.`id` = `t1`.`id`)
+                    AND (`neploc_db`.`spots`.`type` = 'facilities'))) AS `total_facilities`
+    FROM
+        `neploc_db`.`trails` `t1`
