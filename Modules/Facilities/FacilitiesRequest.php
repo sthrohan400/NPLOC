@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Users;
+namespace Modules\Facilities;
 use Illuminate\Foundation\Http\FormRequest;
 class FacilitiesRequest extends FormRequest{
     public function authorize(){
@@ -8,10 +8,8 @@ class FacilitiesRequest extends FormRequest{
     public function rules(){
         $rules = [
             'name' => 'required',
-            'username' => 'required|unique:users',
-            'email' => 'required|unique:users',
-            'password' => 'required|min:6|alpha_num|confirmed',
-            'password_confirmation' => 'required'
+            'icon' => 'required'
+            
         ];
         return $rules;
     }

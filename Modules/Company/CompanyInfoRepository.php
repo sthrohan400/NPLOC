@@ -5,10 +5,12 @@ use Modules\Company\CompanyInfoModel;
 class CompanyINfoRepository extends CoreRepository{
     private $companyInfoModel;
     public function __construct(CompanyInfoModel $companyInfoModel){
-        parent::__construct($companyInfoModel);
+        
         $this->companyInfoModel =  $companyInfoModel;
+        parent::__construct($companyInfoModel);
     }
     public function getByCompanyId($id){
-        return $this->companyInfoModel->where('company_id','=',$id)->first();
+    	$a = new CompanyInfoModel();
+        return  $this->companyInfoModel->where('company_id','=',$id)->first();
     }
 }

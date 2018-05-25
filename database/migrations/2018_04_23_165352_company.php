@@ -28,20 +28,22 @@ class Company extends Migration
         });
         Schema::create('company_info', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id');
             $table->string('title');
 			$table->string('name');
             $table->string('email');
-            $table->string('addr1');
-            $table->string('addr2');
-            $table->text('descr1');
-            $table->text('descr2');
-            $table->text('descr3');
-            $table->string('phone1');
+            $table->string('addr1')->nullable();
+            $table->string('addr2')->nullable();
+            $table->text('descr1')->nullable();
+            $table->text('descr2')->nullable();
+            $table->text('descr3')->nullable();
+            $table->string('phone1')->nullable();
             $table->string('phone2');
-            $table->string('logo');
-            $table->string('meta_title');
-            $table->string('meta_description');
-            $table->string('meta_keywords');
+            $table->string('logo')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_logo')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -55,7 +57,7 @@ class Company extends Migration
     public function down()
     {
         //
-        Schema::drop('company');
-        Schema:drop('company_info');
+        Schema::dropIfExists('company');
+        Schema::dropIfExists('company_info');
     }
 }

@@ -5,6 +5,7 @@
             @include('master.message')
                 <div class="card">
                   <div class="card-body">
+                    <a href="{{route('ViewCompany')}}" class="pull-right"> <button class="btn btn-success btn-fw"><i class="fa fa-list"></i> List</button></a>
                     <h4 class="card-title">Company Form</h4>
                   <form class="form-sample" method="POST" action="{{url('/admin/company/create')}}">
                     {!! csrf_field() !!}

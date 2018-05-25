@@ -8,6 +8,7 @@ class CreateTrail extends Migration
     {
         Schema::create('languages', function(Blueprint $table) {
              $table->increments('id');
+             $table->integer('company_id');
              $table->string('name');
              $table->string('code')->unique();
              $table->timestamps();
@@ -16,6 +17,7 @@ class CreateTrail extends Migration
 
         Schema::create('trails', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id');
             $table->integer('lang_id');
             $table->string('name');
             $table->string('short_descr')->nullable();
@@ -29,6 +31,7 @@ class CreateTrail extends Migration
         });
         Schema::create('trail_files', function(Blueprint $table) {
             $table->increments('id');
+           
             $table->integer('trails_id')->nullable();
             $table->integer('spots_id')->nullable();
             $table->string('path');
@@ -40,6 +43,17 @@ class CreateTrail extends Migration
             $table->softDeletes();
 
         });
+        Schema::create('facilities', function(Blueprint $table) {
+             $table->increments('id');
+             $table->integer('lang_id');
+             $table->integer('company_id');
+             $table->string('name');
+             $table->string('short_descr')->nullable();
+             $table->string('icon');
+             $table->boolean('status')->default(0);
+             $table->timestamps();
+             $table->softDeletes();
+        });
 
         Schema::create('spots', function(Blueprint $table) {
              $table->increments('id');
@@ -50,8 +64,16 @@ class CreateTrail extends Migration
              $table->text('descr');
              $table->decimal('lat',10,8);
              $table->decimal('long',11,8);
-             $table->boolean('is_notifiable')->default(0);
              $table->boolean('status')->default(0);
+             $table->timestamps();
+             $table->softDeletes();
+        });
+         Schema::create('trails_spots', function(Blueprint $table) {
+             $table->increments('id');
+             $table->boolean('is_notifiable')->default(0);
+             $table->integer('order_num');
+             $table->integer('trails_id');
+             $table->integer('spots_id');
              $table->timestamps();
              $table->softDeletes();
         });
@@ -60,7 +82,9 @@ class CreateTrail extends Migration
     {
         Schema::dropIfExists('languages');
         Schema::dropIfExists('trails');
+        Schema::dropIfExists('facillities');
         Schema::dropIfExists('trail_files');
         Schema::dropIfExists('spots');
+        Schema::dropIfExists('trails_spots');
     }
 }
