@@ -5,7 +5,11 @@
         <div class="card-body">
           <h4 class="card-title">Trails Table
             <span class="float-right">
+<<<<<<< HEAD
             <a href="{{route('TrailForm')}}"> <button class="btn btn-success btn-fw"><i class="fa fa-plus"></i> Trail</button></a>
+=======
+            <a href="{{route('FacilitiesForm')}}"> <button class="btn btn-success btn-fw"><i class="fa fa-plus"></i> Facilities</button></a>
+>>>>>>> 8d0555b075366451ca69c7fa69f3d817bec83215
             </span>
           </h4>
           <div class="row">

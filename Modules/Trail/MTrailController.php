@@ -14,12 +14,6 @@ class MTrailController extends Controller{
     public function index(Request $request){
         return view('trail.index');
     }
-    public function create(){
-        return view('trail.create');
-    }
-    public function store(TrailRequest $request){
-        
-    }
    public function search(Request $request){
         $page = $request->get('page',1);
         $pagesize = $request->get('pagesize',10);
