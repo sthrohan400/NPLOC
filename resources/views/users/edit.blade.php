@@ -5,6 +5,7 @@
 <!--                 @include('master.message') -->
                 <div class="card">
                   <div class="card-body">
+                    <a href="{{route('ViewUser')}}" class="pull-right"> <button class="btn btn-success btn-fw"><i class="fa fa-list"></i> List</button></a>
                     <h4 class="card-title">Update User Form</h4>
                     <br>
                      <ul class="nav nav-tabs">
@@ -228,8 +229,7 @@
                   </div>
                 </div>
               </div>
-              <div id="nepuzz-table" data-url="{{url()->current()}}" class="dataTables_wrapper form-inline dt-bootstrap no-footer">    
-            </div> 
+              
 </div>
 {{-- <script type="text/javascript">
   function openKCFinder(div) {

@@ -8,7 +8,3 @@
         </ul>
     </div>
 @endif
-<script>
-$(function(){
-});
-</script>

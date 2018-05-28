@@ -37,3 +37,72 @@ $(function(){
   });
 });
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAlYH1BCtePpyRlZ5tWJBYmHzI35v8byw&callback=initMap"
+async defer></script>
+
+<script>
+    function initMap() {
+      var marker = new google.maps.Marker();
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+      var map;
+      var infowindow;
+      // var contentString = '<div id="content">'+
+      //   '<div id="siteNotice">'+
+      //   '</div>'+
+      //   '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      //   '<div id="bodyContent">'+
+      //   '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+      //   'sandstone rock formation in the southern part of the '+
+      //   'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+      //   'south west of the nearest large town, Alice Springs; 450&#160;km '+
+      //   '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+      //   'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+      //   'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+      //   'Aboriginal people of the area. It has many springs, waterholes, '+
+      //   'rock caves and ancient paintings. Uluru is listed as a World '+
+      //   'Heritage Site.</p>'+
+      //   '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      //   'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      //   '(last visited June 22, 2009).</p>'+
+      //   '</div>'+
+      //   '</div>';
+      var markers = [];
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+      google.maps.event.addListener(map, 'click', function(event) {
+        addMarker(event, map);
+      });
+      function addMarker(location, map) {
+          markers.push(location);
+          showMarkers(markers);
+          showMarkerForm(markers);
+      }
+      function showMarkers(markers){
+        markers.forEach(function(m){
+          var a = new google.maps.Marker({
+            position: m.latLng,
+            map: map
+          });
+          // var i = new google.maps.InfoWindow({
+          //   content: contentString
+          // });
+          // a.addListener('click',function(){
+          //   //i.open(map,a);
+          // });
+        });
+      }
+      function showMarkerForm(markers){
+        var temp = "<br/>";
+        markers.forEach(function(mar){
+          temp += '<fieldset><a class="pull-right"><i class="fa fa-chevron-down"></i></a></fieldset>';
+          temp += '<h4>'+JSON.stringify(mar)+'</h4>';
+        })
+        document.getElementById('spotsForm').innerHTML = temp;
+        //d.innerHTML(temp);
+      }
+
+    }
+  </script>

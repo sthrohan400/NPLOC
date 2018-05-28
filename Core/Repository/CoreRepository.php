@@ -79,7 +79,6 @@ class CoreRepository implements CoreInterface
 			$orderBy = 'created_at ASC';
 		else
 			$orderBy = urldecode($orderBy);
-
 		$off = ($page - 1) >= 0 ? ($page -1) : 0; 	
 		$offset = $off * $pagesize;
 		$limit = $pagesize;

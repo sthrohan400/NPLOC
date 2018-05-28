@@ -3,9 +3,9 @@
 <div class="content-wrapper">
     <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Facilities Table
+          <h4 class="card-title">Trails Table
             <span class="float-right">
-            <a href="{{route('FacilitiesForm')}}"> <button class="btn btn-success btn-fw"><i class="fa fa-plus"></i> Facilities</button></a>
+            <a href="{{route('TrailForm')}}"> <button class="btn btn-success btn-fw"><i class="fa fa-plus"></i> Trail</button></a>
             </span>
           </h4>
           <div class="row">

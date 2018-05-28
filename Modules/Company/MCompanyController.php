@@ -56,13 +56,15 @@ class MCompanyController extends Controller{
     public function edit($id){
         try{
             $company = $this->companyRepo->getById($id);
-            $companyInfo = $this->companyInfoRepo->getByCompanyId($company['id']);
+            $companyInfo = $this->companyInfoRepo->getByCompanyId($company->id);
         }
         catch(\Exception $e){
 
         }
-        
+        $company = json_decode(json_encode($company),true);
+        $companyInfo = json_decode(json_encode($companyInfo),true);
         $data = array_merge($company,$companyInfo);
+        return $data;
         return view('company.edit',compact('data'));
     }
     public function update(Request $request , $id){

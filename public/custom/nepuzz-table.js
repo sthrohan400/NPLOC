@@ -67,7 +67,7 @@
                 else{
                     dids.splice(tempindex,1);
                 }
-                console.log(dids);
+                console.log("First:",dids);
                 $('input[name="delete_ids"]').val(JSON.stringify(dids));
             }
 
@@ -87,6 +87,8 @@
                               },
                         success: function (data) {
                             $('#overlay').hide();
+                            dids = []; //reinitializing delete ids
+                           // console.log("After:",dids);
                             $.getData();
                         },
                         error: function(e){
