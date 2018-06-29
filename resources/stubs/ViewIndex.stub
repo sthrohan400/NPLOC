@@ -1,0 +1,60 @@
+@extends('layouts.backend.master')
+
+@section('content')
+
+<div class="x_panel">
+        <div class="x_title">
+            <h2>{{modelName}}</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li >
+                     <span>
+                           <a href="{!! route('{{modelNameSingularLowerCase}}.create') !!}" class="btn btn-primary">
+                                  Add New  {{modelName}}
+                              </a>
+                       </span>
+
+
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="x_content"> 
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>S.N.</th> 
+
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <?php  $i=1; ?>
+                @foreach($posts as $p)
+
+                <tr>
+                    <td> {{ $i }}</td> 
+                     
+                    <td> 
+                    <a href=" {{ route('{{modelNameSingularLowerCase}}.edit',$p->id) }}" class="action-btns">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    {{Form::open(['route'=>['{{modelNameSingularLowerCase}}.destroy', $p->id] , 'method'=>'DELETE', 'class'=>'form-inline' ])}}
+                         
+                    {{Form::close()}}
+                   
+                    </td>
+                </tr>
+                 <?php $i++; ?>
+
+                @endforeach
+                </tbody>
+            </table>
+            
+            {{ $posts->links() }}
+        </div>
+    </div>
+
+
+@endsection

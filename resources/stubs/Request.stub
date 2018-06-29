@@ -1,0 +1,14 @@
+<?php
+namespace Modules\{{modelName}};
+use Illuminate\Foundation\Http\FormRequest;
+class {{modelName}}Request extends FormRequest{
+    public function authorize(){
+        return true;
+    }
+    public function rules(){
+        $rules = [
+            
+        ];
+        return $rules;
+    }
+}

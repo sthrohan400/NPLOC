@@ -1,0 +1,38 @@
+@extends('layouts.backend.master')
+
+@section('content')
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Add New {{modelName}}</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <span><a href="{!! route('{{modelNameSingularLowerCase}}.index') !!}" class="btn btn-primary">{{modelName}} Index</a></span>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="x_content">
+                 @include('error-success') 
+                 
+                {{Form::open(['route'=>'{{modelNameSingularLowerCase}}.store', 'id'=>'demo-form2', 'class'=>'form-horizontal form-label-left', 'data-parsley-validate', 'files'=>'true'])}}
+                    
+                    @include('form.form')
+                     
+                    <div class="form-footer">
+                        <div class="form-group">
+                            <div class="submit-btn col-md-6 col-md-offset-3 col-sm-offset-3">
+                                <button type="submit"  class="btn btn-success">Submit</button>
+                                <a href="{{ route('{{modelNameSingularLowerCase}}.index') }}" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+
+ 
+                {{Form::close()}}
+            </div>
+        </div>
+
+
+@endsection

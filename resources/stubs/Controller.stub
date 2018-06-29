@@ -1,0 +1,49 @@
+<?php
+
+namespace Modules\{{modelName}};
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Modules\{{modelName}}\{{modelName}}Repository;
+use Modules\{{modelName}}\{{modelName}}InfoRepository;
+use Modules\{{modelName}}\{{modelName}}Request;
+
+class {{modelName}}Controller extends Controller
+{
+    private ${{modelNameSingularLowerCase}}Repo;
+    public function __construct({{modelName}}Repository ${{modelNameSingularLowerCase}}Repo){
+        $this->{{modelNameSingularLowerCase}}Repo =  ${{modelNameSingularLowerCase}}Repo;
+
+    } 
+     
+    public function index()
+    {
+        ${{modelNamePluralLowerCase}} = $this->{{modelNameSingularLowerCase}}Repo->getAll() ;
+
+        return response()->json(${{modelNamePluralLowerCase}});
+    }
+
+    public function store({{modelName}}Request $request)
+    {
+        ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}Repo->store($request->all());
+
+        return response()->json(${{modelNameSingularLowerCase}}, 201);
+    }
+
+    public function show($id)
+    { 
+    }
+
+    public function update({{modelName}}Request $request, $id)
+    {
+         ${{modelNameSingularLowerCase}}= $this->{{modelNameSingularLowerCase}}Repo->update($request->all(),$id);
+
+        return response()->json(${{modelNameSingularLowerCase}}, 200);
+    }
+
+    public function destroy($id)
+    {
+       $this->{{modelNameSingularLowerCase}}Repo->destroy($id);
+
+        return response()->json(null, 204);
+    } 
+}

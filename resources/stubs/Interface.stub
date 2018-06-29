@@ -1,0 +1,6 @@
+<?php
+namespace Modules\{{modelName}};
+use Core\Interfaces\CoreInterface;
+class {{modelName}}Interace extends CoreInterface{
+
+}

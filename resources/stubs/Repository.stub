@@ -1,0 +1,10 @@
+<?php
+namespace Modules\{{modelName}};
+use Core\Repository\CoreRepository;
+use Modules\{{modelName}}\{{modelName}}Model;
+use Modules\{{modelName}}\{{modelName}}ViewModel;
+class {{modelName}}Repository extends CoreRepository{
+    public function __construct({{modelName}}Model ${{modelNameSingularLowerCase}}Model){
+        parent::__construct(${{modelNameSingularLowerCase}}Model);
+    }
+}
